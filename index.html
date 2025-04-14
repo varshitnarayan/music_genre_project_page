@@ -52,65 +52,102 @@
     </header>
 
     <section>
-        <h2>📁 Dataset</h2>
-        <p>
-            This project uses the <strong>GTZAN Genre Collection</strong>, a well-known benchmark dataset containing 
-            <strong>1,000 audio tracks</strong> (each 30 seconds long) across <strong>10 music genres</strong>, including 
-            blues, classical, country, disco, hip-hop, jazz, metal, pop, reggae, and rock. All files are in <code>.wav</code> 
-            format and sampled at 22,050 Hz. The dataset is balanced with 100 tracks per genre, making it ideal for training 
-            and evaluating classification models.
-        </p>
-    </section>
-    
-    <section>
-        <h2>🔍 Methodology</h2>
-        <p>
-            Instead of using external audio libraries like <code>librosa</code>, we designed a complete <strong>custom audio 
-            processing pipeline</strong> using only basic Python libraries such as <code>wave</code> and <code>numpy</code>. 
-            We extracted meaningful features from raw audio signals, including:
-        </p>
-        <ul>
-            <li>Spectral Centroid, Bandwidth, and Rolloff</li>
-            <li>Zero-Crossing Rate</li>
-            <li>Root Mean Square Energy (RMSE)</li>
-            <li>Estimated Tempo</li>
-            <li>Duration</li>
-        </ul>
-        <p>
-            All features were normalized using min-max scaling. We then applied multiple machine learning algorithms—such as 
-            <strong>K-Nearest Neighbors</strong>, <strong>Gaussian Naive Bayes</strong>, <strong>K-Means Clustering</strong>, 
-            <strong>Support Vector Machine</strong>, <strong>Decision Tree</strong>, and 
-            <strong>Logistic Regression</strong>—to classify the tracks. Each model was trained using an 80/20 train-test split 
-            and evaluated on various performance metrics.
-        </p>
-    </section>
-    
-    <section>
-        <h2>📊 Results</h2>
-        <p>
-            Our experiments revealed that traditional models, when paired with well-engineered features, can perform 
-            surprisingly well. <strong>K-Means Clustering</strong> and <strong>KNN</strong> achieved the highest classification 
-            accuracy at <strong>36.44%</strong> and <strong>35.04%</strong> respectively. Other models like 
-            <strong>Naive Bayes</strong> (30%) and <strong>SVM</strong> (30.5%) also showed promising results, while 
-            <strong>Logistic Regression</strong> and <strong>Random Forests</strong> performed moderately. 
-        </p>
-        <p>
-            We also explored how model performance varied across genres, with genres like <em>classical</em> and 
-            <em>pop</em> being classified more accurately, and others like <em>jazz</em> and <em>country</em> posing more 
-            challenges due to overlapping feature distributions.
-        </p>
-    </section>
-    
-    <section>
-        <h2>📌 Conclusion</h2>
-        <p>
-            This project demonstrates that <strong>music genre classification</strong> can be effectively tackled using 
-            <strong>standard machine learning models</strong> and handcrafted features. By avoiding deep learning frameworks 
-            and external libraries, we gained deeper insights into the inner workings of ML algorithms and signal processing. 
-            The results are promising and set a strong foundation for future improvements using more advanced features or 
-            hybrid models.
-        </p>
-    </section>
+    <h2>📁 Dataset</h2>
+    <p>
+        • We used the <strong>GTZAN Genre Collection</strong>, a popular benchmark dataset for music classification.<br>
+        • It contains <strong>1,000 audio tracks</strong>, each 30 seconds long and sampled at 22,050 Hz.<br>
+        • The dataset covers <strong>10 genres</strong>: blues, classical, country, disco, hip-hop, jazz, metal, pop, reggae, and rock.<br>
+        • Each genre has exactly 100 samples, making the dataset balanced and suitable for fair evaluation.<br>
+        • All files are in <code>.wav</code> format and were preprocessed manually using custom Python scripts.
+    </p>
+</section>
+
+<section>
+    <h2>🔍 Methodology</h2>
+    <p>
+        • We designed a custom audio feature extraction pipeline using <code>wave</code> and <code>numpy</code> libraries.<br>
+        • No external libraries like <code>librosa</code> or scikit-learn were used for feature extraction or model training.<br>
+        • Extracted features include:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Spectral Centroid</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Spectral Bandwidth</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Spectral Rolloff</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Zero-Crossing Rate</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Root Mean Square Energy (RMSE)</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Estimated Tempo</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Duration</strong><br>
+        • Features were normalized using <strong>Min-Max Scaling</strong>.<br>
+        • We applied various machine learning models, trained with an 80/20 train-test split:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>K-Nearest Neighbors (KNN)</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Support Vector Machine (SVM)</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Naive Bayes</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>K-Means Clustering</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Decision Tree</strong> and <strong>Random Forest</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– <strong>Multi-class Logistic Regression</strong><br>
+    </p>
+</section>
+
+<section>
+    <h2>📊 Results</h2>
+    <p>
+        • Each model was evaluated using accuracy, and in some cases precision, recall, and F1 score.<br>
+        • K-Means and KNN performed best, showing strong potential for genre classification without deep learning.<br>
+        • Genres like <strong>classical</strong> and <strong>pop</strong> had better prediction scores, while <strong>jazz</strong> and <strong>country</strong> were more difficult to distinguish.<br>
+        • Below is a comparison of model accuracies:
+    </p>
+
+    <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+            <tr>
+                <th><strong>Model</strong></th>
+                <th><strong>Accuracy (%)</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>K-Means (Manual Implementation)</td>
+                <td>36.44%</td>
+            </tr>
+            <tr>
+                <td>K-Nearest Neighbors (k = 6)</td>
+                <td>35.04%</td>
+            </tr>
+            <tr>
+                <td>Support Vector Machine (SVM)</td>
+                <td>30.50%</td>
+            </tr>
+            <tr>
+                <td>Naive Bayes</td>
+                <td>30.00%</td>
+            </tr>
+            <tr>
+                <td>Logistic Regression</td>
+                <td>27.64%</td>
+            </tr>
+            <tr>
+                <td>Random Forest</td>
+                <td>22.00%</td>
+            </tr>
+            <tr>
+                <td>Decision Tree (Stump)</td>
+                <td>20.02%</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2>📌 Conclusion</h2>
+    <p>
+        • This project shows that effective genre classification can be achieved using <strong>traditional ML models</strong> and <strong>custom-engineered features</strong>.<br>
+        • Despite not using deep learning or advanced libraries, we obtained competitive results using simple, interpretable models.<br>
+        • The project emphasizes the value of understanding feature behavior, model dynamics, and data preparation.<br>
+        • Future improvements may include:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– Extracting more advanced features (e.g., MFCCs)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– Reducing feature overlap via better dimensionality reduction<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;– Trying hybrid models or ensemble approaches<br>
+    </p>
+</section>
+
 
 
     <footer>
