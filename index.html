@@ -53,23 +53,24 @@
 
     <section>
         <h2>📁 Dataset</h2>
-        <p>This project uses a music dataset containing features extracted from audio files, such as tempo, spectral features, and rhythm patterns.</p>
+        <p>We used the GTZAN Genre Collection dataset consisting of 1,000 audio tracks (30 seconds each) across 10 genres such as rock, classical, jazz, and hip-hop. Each track was processed to extract key audio features like spectral centroid, bandwidth, rolloff, zero-crossing rate, RMSE, tempo, and duration using only basic Python libraries.</p>
     </section>
-
+    
     <section>
         <h2>🔍 Methodology</h2>
-        <p>We apply machine learning models including K-Nearest Neighbors, SVM, and Random Forests to classify songs into genres like pop, rock, classical, and more.</p>
+        <p>Instead of using external libraries like librosa, we built a custom feature extraction pipeline using NumPy and wave modules. The features were normalized and passed through several machine learning models: K-Nearest Neighbors, Gaussian Naive Bayes, K-Means Clustering, Decision Trees, Support Vector Machine (SVM), and Logistic Regression. Models were trained using an 80/20 train-test split and evaluated using metrics like accuracy, precision, recall, and F1-score.</p>
     </section>
-
+    
     <section>
         <h2>📊 Results</h2>
-        <p>Model accuracy and performance metrics are discussed and visualized in the full notebook and HTML report.</p>
+        <p>Among all tested models, K-Means (36.44%) and K-Nearest Neighbors (35.04%) achieved the highest accuracy. Naive Bayes and SVM followed closely. Performance varied across genres due to feature overlaps, with genres like classical and pop showing stronger results. All models were implemented and visualized manually without third-party ML libraries.</p>
     </section>
-
+    
     <section>
         <h2>📌 Conclusion</h2>
-        <p>The project demonstrates that music genres can be predicted effectively using audio features and standard ML models.</p>
+        <p>The project demonstrates that traditional machine learning algorithms, when combined with handcrafted spectral and temporal audio features, can effectively classify music genres without deep learning. Our hands-on approach also deepened understanding of model behavior, feature importance, and evaluation under varying conditions.</p>
     </section>
+
 
     <footer>
         &copy; 2025 Music Genre Project | Created with 💡 and 🎶
